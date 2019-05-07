@@ -6,10 +6,23 @@
     </head>
     <body>
         <script>
+            let choiceArray = ["rock", "paper", "scissors"];
+            let min = 0;
+            let max = choiceArray.length - 1;
+            let computerChoice = computerPlay();
+            function getRandom() 
+            {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min; 
+            }
+            
             function computerPlay()
             {
-                let choiceArray
+                return choiceArray[getRandom()];
             }
+            console.log(computerPlay());
+
         </script>
     </body>
 </html>
