@@ -6,14 +6,16 @@
     </head>
     <body>
         <script>
-            let choiceArray = ["rock", "paper", "scissors"];
-            let min = 0;
-            let max = choiceArray.length - 1;
-            let computerChoice = computerPlay();
-            let playerInput = prompt("Make your choice! Type 'Rock', 'Paper' or 'Scissors'");
-            let playerChoice = inputLowercase();
-            let youLost = computerChoice + " beats " + playerChoice + "! You lost!"
-            let youWin = playerChoice + " beats " + computerChoice + "! You Win!"
+            var choiceArray = ["rock", "paper", "scissors"];
+            var min = 0;
+            var max = choiceArray.length - 1;
+            var computerChoice = computerPlay();
+            var playerInput = prompt("Make your choice! Type 'Rock', 'Paper' or 'Scissors'");
+            var playerChoice = inputLowercase();
+            var youLost = computerChoice + " beats " + playerChoice + "! You lost!";
+            var youWin = playerChoice + " beats " + computerChoice + "! You Win!";
+            var roundResult = playRound();
+            var playerPoints = 0;
             function getRandom() 
             {
                 min = Math.ceil(min);
@@ -64,7 +66,15 @@
                     return youWin;
                 }
             }
-            console.log(playRound(computerChoice, playerChoice));
+            function game()
+            {
+                playRound();
+                if (roundResult == youWin)
+                {
+                    return playerPoints + 1;
+                }
+            }
+            console.log(game());
         </script>
     </body>
 </html>
