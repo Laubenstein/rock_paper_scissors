@@ -10,6 +10,10 @@
             let min = 0;
             let max = choiceArray.length - 1;
             let computerChoice = computerPlay();
+            let playerInput = prompt("Make your choice! Type 'Rock', 'Paper' or 'Scissors'");
+            let playerChoice = inputLowercase();
+            let youLost = computerChoice + " beats " + playerChoice + "! You lost!"
+            let youWin = playerChoice + " beats " + computerChoice + "! You Win!"
             function getRandom() 
             {
                 min = Math.ceil(min);
@@ -21,8 +25,46 @@
             {
                 return choiceArray[getRandom()];
             }
-            console.log(computerPlay());
+            
+            function inputLowercase()
+            {
+                return playerInput.toLowerCase();
 
+            }
+            function playRound(computerChoice, playerChoice)
+            {
+                if (computerChoice == playerChoice)
+                {
+                   /*playerInput = prompt("Tie! Choose again! Type 'Rock', 'Paper' or 'Scissors'")
+                    */
+                    return "Tie! Reload page to play again!";
+                }
+                else if (computerChoice == "scissors" && playerChoice == "paper")
+                {
+                    return youLost;
+                }
+                else if (computerChoice == "scissors" && playerChoice == "rock")
+                {
+                    return youWin;
+                }
+                else if (computerChoice == "paper" && playerChoice == "rock")
+                {
+                    return youLost;
+                }
+                else if (computerChoice == "paper" && playerChoice == "scissors")
+                {
+                    return youWin;
+                }
+                else if (computerChoice == "rock" && playerChoice == "scissors")
+                {
+                    return youLost;
+                }
+                else (computerChoice == "rock" && playerChoice == "paper")
+                {
+                    return youWin;
+                }
+            }
+            console.log(playRound(computerChoice, playerChoice));
         </script>
     </body>
 </html>
