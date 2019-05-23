@@ -10,8 +10,8 @@
             var min = 0;
             var max = choiceArray.length - 1;
             var computerChoice = computerPlay();
-            var playerInput = "";
-            var playerChoice = inputLowercase();
+            var playerInput = prompt("Enter Rock, Paper or Scissors!");
+            var playerChoice = playerInput.toLowerCase();
             var youLost = "Computer's " + computerChoice + " beats your " + playerChoice + "! You lost this round!";
             var youWin = "Your " + playerChoice + " beats computer's " + computerChoice + "! You Win this round!";
             var tie = "Tie!"
@@ -21,6 +21,11 @@
             var computerPoints = 0;
             var endText = ""
 
+            /*function getPlayerInput()
+            {
+                playerInput = window.prompt("Enter Rock, Paper or Scissors!");
+                return playerInput.toLowerCase();
+            }*/
             function getRandom() 
             {
                 min = Math.ceil(min);
@@ -33,14 +38,15 @@
                 return choiceArray[getRandom()];
             }
             
-            function inputLowercase()
+            /*function inputLowercase()
             {
                 return playerInput.toLowerCase();
-
-            }
+            }*/
             
             function playRound()
             {
+                
+                
                 computerPlay();
                 if (computerChoice == playerChoice)
                 {
@@ -87,17 +93,17 @@
                     playRound();
                     if (roundResult == youWin)
                     {
-                        playerPoints++;
-                        return roundResult;
+                        playerPoints += 1;
+                        return roundResult + " You have " + playerPoints + " points.";
                     }
                     else if (roundResult == youLost)
                     {
-                        computerPoints++;
-                        return roundResult;
+                        computerPoints +=1;
+                        return roundResult + " You have " + playerPoints + " points.";
                     }
-                    else (roundResult = tie)
+                    else
                     {
-                        return roundResult;
+                        return roundResult + " You have " + playerPoints + " points.";
                     }
                 }
             }
