@@ -9,9 +9,9 @@
             const choiceArray = ["rock", "paper", "scissors"];
             var min = 0;
             var max = choiceArray.length - 1;
-            var computerChoice = computerPlay();
-            var playerInput = prompt("Enter Rock, Paper or Scissors!");
-            var playerChoice = playerInput.toLowerCase();
+            var computerChoice;
+            var playerInput;
+            var playerChoice;
             var youLost = "Computer's " + computerChoice + " beats your " + playerChoice + "! You lost this round!";
             var youWin = "Your " + playerChoice + " beats computer's " + computerChoice + "! You Win this round!";
             var tie = "Tie!"
@@ -35,7 +35,8 @@
             
             function computerPlay()
             {
-                return choiceArray[getRandom()];
+                computerChoice = choiceArray[getRandom()];
+                return computerChoice;
             }
             
             /*function inputLowercase()
@@ -46,12 +47,11 @@
             function playRound()
             {
                 
-                
+                playerInput = prompt("Enter Rock, Paper or Scissors!");
+                playerChoice = playerInput.toLowerCase();
                 computerPlay();
                 if (computerChoice == playerChoice)
                 {
-                   /*playerInput = prompt("Tie! Choose again! Type 'Rock', 'Paper' or 'Scissors'")
-                    */
                     return tie;
                 }
                 else if (computerChoice == "scissors" && playerChoice == "paper")
@@ -87,9 +87,10 @@
             function game()
             {
                 
-                var i;
+                //let i;
                 while (playerPoints < 5)
                 {
+                    
                     playRound();
                     if (roundResult == youWin)
                     {
@@ -107,8 +108,7 @@
                     }
                 }
             }
-            game();
-            console.log(game());
+            console.log();
         </script>
     </body>
 </html>
