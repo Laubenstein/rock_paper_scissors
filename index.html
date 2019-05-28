@@ -10,12 +10,11 @@
       let computerScore = 0;
       var computerSelection;
       var playerSelection;
-      //const tie = "Tie!";
-      //let youWin = "Your " + playerSelection + " beats computer's " + computerSelection + "! You Win this round!";
-      //let youLost = "Computer's " + computerSelection + " beats your " + playerSelection + "! You lost this round!";
+    
       function getPlayerSelection() {
         return prompt("Enter Rock, Paper, or Scissors!").toLowerCase();
       }
+      
       function playRound(playerSelection, computerSelection) {
         if (computerSelection == playerSelection) {
           return console.log("Tie!");
@@ -35,12 +34,14 @@
         else if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
           return console.log("Input error! Enter 'Rock', 'Paper', or 'Scissors'!");
         }   
-      }   
+      }  
+      
       function computerPlay() {
         const array = ["rock", "paper", "scissors"];
         let max = Math.floor(array.length - 1);
         return array[Math.floor(Math.random() * (max + 1))]; 
       }
+      
       function game() {
         for (let i = 0; i < 5; i++) {   
           playerSelection = getPlayerSelection();
