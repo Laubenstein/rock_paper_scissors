@@ -12,6 +12,9 @@
       <button id="paper" >Paper</button>
       <button id="scissors" >Scissors</button>
     </div>
+    <div id="result">
+      
+    </div>
 
 
     <script>
@@ -25,29 +28,34 @@
       buttons.forEach((button) => { 
       button.addEventListener('click', (e) => { 
 	      let choice = button.textContent.toLowerCase();
-	      playRound(choice ,computerPlay());
+	      const resultContainer = document.querySelector("#result");
+        const result = document.createElement("p");
+        result.classList.add("result");
+        result.textContent = playRound(choice, computerPlay());
+        resultContainer.appendChild(result);
+        
         });
       });
       
       
       function playRound(playerSelection, computerSelection) {
         if (computerSelection == playerSelection) {
-          return console.log("Tie!");
+          return "Tie!";
         }
         //You Lost!
         else if ((computerSelection == "scissors" && playerSelection == "paper") || (computerSelection == "paper" && playerSelection == "rock") 
                   || (computerSelection == "rock" && playerSelection == "scissors")) {
-          return console.log("Computer's " + computerSelection + " beats your " + playerSelection + "! You lost this round!");
+          return "Computer's " + computerSelection + " beats your " + playerSelection + "! You lost this round!";
         }
         //You win!
         else if ((computerSelection == "scissors" && playerSelection == "rock") || (computerSelection == "paper" && playerSelection == "scissors")
                   || (computerSelection == "rock" && playerSelection == "paper")) {
           playerScore++;
-          return console.log("Your " + playerSelection + " beats computer's " + computerSelection + "! You Win this round!");
+          return "Your " + playerSelection + " beats computer's " + computerSelection + "! You Win this round!";
         }
         //Input error
         else if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
-          return console.log("Input error! Enter 'Rock', 'Paper', or 'Scissors'!");
+          return "Input error! Enter 'Rock', 'Paper', or 'Scissors'!";
         }   
       }  
       
@@ -65,7 +73,7 @@
         }
         return (playerScore == 1 ? "End of game! You have " + playerScore + " point!" : "End of game! You have " + playerScore + " points!")    
       }
-      //console.log(playRound());
+      
     </script>
   </body>
 </html>
