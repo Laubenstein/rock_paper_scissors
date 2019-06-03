@@ -1,2 +1,6 @@
-Play 5 rounds of Rock, Paper, Scissors against the computer!
-Open your browser's command line to play!
+Play Rock, Paper, Scissors against the computer!
+This is a work in progress. 
+Next steps will be:
+- Add function to play 5 rounds
+- Count Player's-/Computer's points
+- Make it look fancy
