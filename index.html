@@ -5,15 +5,30 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <h1>Play Rock Paper Scissors against the Computer!</h1>
+    <h2>Choose wisely!</h2>
+    <div class="rpcButtons">
+      <button id="rock" >Rock</button>
+      <button id="paper" >Paper</button>
+      <button id="scissors" >Scissors</button>
+    </div>
+
+
     <script>
       let playerScore = 0;
       let computerScore = 0;
       var computerSelection;
       var playerSelection;
-    
-      function getPlayerSelection() {
-        return prompt("Enter Rock, Paper, or Scissors!").toLowerCase();
-      }
+      
+      const buttons = document.querySelectorAll('button');
+
+      buttons.forEach((button) => { 
+      button.addEventListener('click', (e) => { 
+	      let choice = button.textContent.toLowerCase();
+	      playRound(choice ,computerPlay());
+        });
+      });
+      
       
       function playRound(playerSelection, computerSelection) {
         if (computerSelection == playerSelection) {
@@ -50,7 +65,7 @@
         }
         return (playerScore == 1 ? "End of game! You have " + playerScore + " point!" : "End of game! You have " + playerScore + " points!")    
       }
-      console.log(game());
+      //console.log(playRound());
     </script>
   </body>
 </html>
