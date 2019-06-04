@@ -23,16 +23,17 @@
       var computerSelection;
       var playerSelection;
       
+      const resultContainer = document.querySelector("#result");
+      const result = document.createElement("p");
+      result.classList.add("result");
+      resultContainer.appendChild(result);
       const buttons = document.querySelectorAll('button');
 
       buttons.forEach((button) => { 
       button.addEventListener('click', (e) => { 
 	      let choice = button.textContent.toLowerCase();
-	      const resultContainer = document.querySelector("#result");
-        const result = document.createElement("p");
-        result.classList.add("result");
-        result.textContent = playRound(choice, computerPlay());
-        resultContainer.appendChild(result);
+	      result.innerHTML = playRound(choice, computerPlay());
+        
         
         });
       });
@@ -65,7 +66,7 @@
         return array[Math.floor(Math.random() * (max + 1))]; 
       }
       
-      function game() {
+      function game(playerSelection, computerSelection) {
         for (let i = 0; i < 5; i++) {   
           playerSelection = getPlayerSelection();
           computerSelection = computerPlay();
