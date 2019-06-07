@@ -20,39 +20,66 @@
     <script>
       let playerScore = 0;
       let computerScore = 0;
-      var computerSelection;
-      var playerSelection;
+      let computerSelection;
+      let playerSelection;
+      
+      
       
       const resultContainer = document.querySelector("#result");
       const result = document.createElement("p");
       result.classList.add("result");
       resultContainer.appendChild(result);
+      
       const buttons = document.querySelectorAll('button');
-
-      buttons.forEach((button) => { 
-      button.addEventListener('click', (e) => { 
-	      let choice = button.textContent.toLowerCase();
-	      result.innerHTML = playRound(choice, computerPlay());
-        
-        
+      const rockButton = document.getElementById("rock");
+      const paperButton = document.getElementById("paper");
+      const scissorsButton = document.getElementById("scissors");
+      
+      
+      //Start Game on Button click
+      
+        rockButton.addEventListener("click", (e) => {
+          if (playerScore < 5 && computerScore < 5) {
+          result.innerText = game("rock", computerPlay());
+          } else {
+            result.innerText = "End of Game! Your Score: " + playerScore + "; Computer's Score: " + computerScore;
+          }
         });
-      });
+        paperButton.addEventListener("click", (e) => {
+          if (playerScore < 5 && computerScore < 5) {
+          result.innerText = game("paper", computerPlay());
+          } else {
+            result.innerText = "End of Game! Your Score: " + playerScore + "; Computer's Score: " + computerScore;
+          }
+        })
+        scissorsButton.addEventListener("click", (e) => {
+          if (playerScore < 5 && computerScore < 5) {
+          result.innerText = game("scissors", computerPlay());
+          } else {
+            result.innerText = "End of Game! Your Score: " + playerScore + "; Computer's Score: " + computerScore;
+          }
+        })
+     
+      
       
       
       function playRound(playerSelection, computerSelection) {
         if (computerSelection == playerSelection) {
           return "Tie!";
         }
-        //You Lost!
+        //You Lose!
         else if ((computerSelection == "scissors" && playerSelection == "paper") || (computerSelection == "paper" && playerSelection == "rock") 
                   || (computerSelection == "rock" && playerSelection == "scissors")) {
-          return "Computer's " + computerSelection + " beats your " + playerSelection + "! You lost this round!";
+          computerScore++;
+          return "Computer's " + computerSelection + " beats your " + playerSelection + "! You lost this round!"  
+          + " Your Score: " + playerScore + " , Computer's Score: " + computerScore;
         }
         //You win!
         else if ((computerSelection == "scissors" && playerSelection == "rock") || (computerSelection == "paper" && playerSelection == "scissors")
                   || (computerSelection == "rock" && playerSelection == "paper")) {
           playerScore++;
-          return "Your " + playerSelection + " beats computer's " + computerSelection + "! You Win this round!";
+          return "Your " + playerSelection + " beats computer's " + computerSelection + "! You Win this round!" 
+          + " Your Score: " + playerScore + " , Computer's Score: " + computerScore;
         }
         //Input error
         else if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
@@ -65,8 +92,14 @@
         let max = Math.floor(array.length - 1);
         return array[Math.floor(Math.random() * (max + 1))]; 
       }
-      
+
       function game(playerSelection, computerSelection) {
+        return playRound(playerSelection, computerSelection);
+        
+        
+      }
+
+      function oldGame(playerSelection, computerSelection) {
         for (let i = 0; i < 5; i++) {   
           playerSelection = getPlayerSelection();
           computerSelection = computerPlay();
